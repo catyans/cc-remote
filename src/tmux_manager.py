@@ -74,7 +74,7 @@ class TmuxManager:
         # 创建 tmux session，直接指定工作目录和启动命令
         claude_cmd = self._claude_bin()
         # 使用 跳过权限确认
-        launch_cmd = f"{claude_cmd}"
+        launch_cmd = f"{claude_cmd} --dangerously-skip-permissions"
         self._run([
             "tmux", "new-session",
             "-d",               # 后台运行

@@ -5252,3 +5252,1352 @@ discord.app_commands.errors.CommandInvokeError: Command 'start' raised an except
 2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
 2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
 2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:50:58,409 [INFO] __main__: ==================================================
+2026-03-02 02:50:58,410 [INFO] __main__: CC-Remote 启动中...
+2026-03-02 02:50:58,410 [INFO] __main__: ==================================================
+2026-03-02 02:50:58,412 [INFO] src.config: 配置加载完成: /Users/wangyanshu/Desktop/cc-remote/config.yaml
+2026-03-02 02:50:58,412 [WARNING] discord.client: PyNaCl is not installed, voice will NOT be supported
+2026-03-02 02:50:58,413 [INFO] src.bot: 正在启动 CC-Remote Bot...
+2026-03-02 02:50:58,413 [DEBUG] asyncio: Using selector: KqueueSelector
+2026-03-02 02:51:02,258 [INFO] src.bot: Bot 已上线: cc-remote (ID: 1477721266419925022)
+2026-03-02 02:51:02,259 [INFO] src.commands: 已注册 Claude Code 命令集
+2026-03-02 02:51:02,794 [INFO] src.bot: 已同步 8 个斜杠命令
+2026-03-02 02:52:03,416 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:03,416 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:03,419 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:03,421 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:03,421 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:03,421 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    try:
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:52:03,422 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:03,421 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    try:
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:52:03,426 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    try:
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:52:03,427 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    try:
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:52:03,515 [INFO] src.commands: AUDIT: 2026-03-02T02:52:03.515859 | lovelcat#0 | start | default
+2026-03-02 02:52:03,516 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:03,528 [DEBUG] src.tmux_manager: exec: tmux new-session -d -s cc-remote-default -x 220 -y 50 -c /Users/wangyanshu claude
+2026-03-02 02:52:03,556 [INFO] src.tmux_manager: 已启动会话: cc-remote-default (cwd=/Users/wangyanshu)
+2026-03-02 02:52:03,556 [INFO] src.poller: 开始轮询: default
+2026-03-02 02:52:03,557 [DEBUG] src.poller: 轮询循环启动: default
+2026-03-02 02:52:04,040 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:04,042 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:04,045 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:04,140 [WARNING] discord.webhook.async_: Webhook ID 1477740217254412519 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:52:04,358 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:04,370 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:04,671 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    try:
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 226, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+2026-03-02 02:52:04,673 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    try:
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 226, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+2026-03-02 02:52:04,883 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:05,700 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:05,714 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:06,529 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:06,542 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:07,355 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:07,369 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:08,183 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:08,197 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:09,011 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:09,023 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:09,837 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:09,850 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:10,664 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:10,678 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:11,492 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:11,508 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:12,323 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:12,336 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:13,149 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:13,160 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:13,973 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:13,985 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:14,798 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:14,811 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:15,624 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:15,638 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:16,452 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:16,466 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:17,280 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:17,294 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:18,109 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:18,121 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:18,934 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:18,948 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:19,761 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:19,775 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:20,590 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:20,603 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:21,418 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:21,432 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:22,246 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:22,261 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:23,074 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:23,088 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:23,899 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:23,913 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:24,727 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:24,741 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:25,556 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:25,570 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:25,689 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,689 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,689 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,689 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,689 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,689 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:25,691 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,692 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,693 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,700 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,700 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:25,702 [INFO] src.commands: AUDIT: 2026-03-02T02:52:25.702700 | lovelcat#0 | message | 这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,703 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default 这个代码寻找美股20年最优组合 Enter
+2026-03-02 02:52:25,713 [INFO] src.commands: AUDIT: 2026-03-02T02:52:25.713218 | lovelcat#0 | message | 这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,714 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default 这个代码寻找美股20年最优组合 Enter
+2026-03-02 02:52:25,715 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: 这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,726 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: 这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,748 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,749 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:25,761 [INFO] src.commands: AUDIT: 2026-03-02T02:52:25.761508 | lovelcat#0 | message | 这个代码寻找美股20年最优组合
+2026-03-02 02:52:25,762 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default 这个代码寻找美股20年最优组合 Enter
+2026-03-02 02:52:25,773 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: 这个代码寻找美股20年最优组合
+2026-03-02 02:52:26,209 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477740312846799123/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:52:26,249 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477740312846799123/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:52:26,383 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:26,396 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:26,883 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477740312846799123/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:52:27,210 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:27,223 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:28,038 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:28,052 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:28,866 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:28,881 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:29,694 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:29,709 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:30,522 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:30,537 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:31,350 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:31,365 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:32,177 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:32,191 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:33,005 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:33,019 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:33,832 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:33,846 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:34,659 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:34,672 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:35,487 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:35,501 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:36,313 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:36,326 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:37,138 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:37,153 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:37,966 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:37,981 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:38,795 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:38,809 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:39,623 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:39,638 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:40,452 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:40,467 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:41,282 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:41,296 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:42,110 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:42,122 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:42,936 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:42,951 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:43,767 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:43,779 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:44,593 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:44,606 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:45,419 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:45,434 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:46,247 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:46,258 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:47,069 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:47,084 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:47,898 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:47,912 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:48,725 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:48,739 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:49,553 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:49,565 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:50,378 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:50,393 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:51,207 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:51,221 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:52,035 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:52,049 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:52,864 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:52,877 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:53,690 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:53,704 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:54,517 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:54,531 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:55,345 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:55,359 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:56,171 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:56,184 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:56,998 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:57,011 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:57,822 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:57,836 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:58,648 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:58,662 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:52:59,474 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:52:59,488 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:00,303 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:00,317 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:01,132 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:01,147 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:01,961 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:01,976 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:02,790 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:02,804 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:03,617 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:03,631 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:04,445 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:04,457 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:05,269 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:05,284 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:06,099 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:06,111 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:06,925 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:06,939 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:07,752 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:07,767 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:08,580 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:08,595 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:09,409 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:09,423 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:10,236 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:10,250 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:11,065 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:11,080 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:11,894 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:11,907 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:12,720 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:12,734 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:13,546 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:13,559 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:14,372 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:14,386 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:15,200 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:15,215 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:16,029 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:16,043 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:16,856 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:16,871 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:17,682 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:17,697 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:18,509 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:18,524 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:19,338 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:19,351 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:20,164 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:20,179 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:20,993 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:21,007 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:21,822 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:21,836 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:22,649 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:22,662 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:23,476 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:23,489 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:24,303 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:24,317 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:25,130 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:25,144 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:25,958 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:25,972 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:26,785 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:26,799 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:27,613 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:27,627 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:28,442 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:28,457 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:29,272 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:29,287 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:30,100 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:30,113 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:30,927 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:30,940 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:31,753 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:31,765 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:32,577 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:32,587 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:33,398 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:33,410 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:34,223 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:34,238 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:35,052 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:35,066 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:35,880 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:35,896 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:36,710 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:36,724 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:37,538 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:37,550 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:38,363 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:38,378 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:39,191 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:39,203 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:40,024 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:40,038 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:40,852 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:40,865 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:41,680 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:41,693 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:42,508 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:42,521 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:43,335 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:43,350 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:44,164 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:44,175 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:44,988 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:45,002 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:45,815 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:45,827 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:46,639 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:46,653 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:47,466 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:47,481 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:48,294 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:48,308 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:49,121 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:49,136 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:49,949 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:49,963 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:50,776 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:50,789 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:51,601 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:51,614 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:52,429 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:52,443 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:53,256 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:53,269 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:54,082 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:54,096 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:54,909 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:54,921 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:55,736 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:55,750 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:56,564 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:56,578 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:57,391 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:57,405 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:58,218 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:58,232 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:59,045 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:59,060 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:53:59,875 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:53:59,889 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:00,702 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:00,715 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:01,529 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:01,543 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:02,356 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:02,369 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:03,183 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:03,198 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:04,012 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:04,026 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:04,838 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:04,851 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:05,665 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:05,679 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:06,493 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:06,507 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:07,320 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:07,335 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:08,147 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:08,162 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:08,977 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:08,990 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:09,803 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:09,815 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:10,628 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:10,641 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:11,454 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:11,468 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:12,279 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:12,293 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:13,104 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:13,118 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:13,929 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:13,939 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:14,750 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:14,760 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:15,570 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:15,579 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:16,390 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:16,404 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:17,216 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:17,230 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:18,042 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:18,056 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:18,868 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:18,881 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:19,695 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:19,709 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:20,521 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:20,534 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:20,582 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,582 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,583 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:20,583 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:20,584 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,584 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,584 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,584 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,584 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:20,586 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,586 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,586 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,586 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,597 [INFO] src.commands: AUDIT: 2026-03-02T02:54:20.597395 | lovelcat#0 | message | <@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,597 [INFO] src.commands: AUDIT: 2026-03-02T02:54:20.597557 | lovelcat#0 | message | <@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,598 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 又没动静了 Enter
+2026-03-02 02:54:20,598 [INFO] src.commands: AUDIT: 2026-03-02T02:54:20.598234 | lovelcat#0 | message | <@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,598 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 又没动静了 Enter
+2026-03-02 02:54:20,599 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 又没动静了 Enter
+2026-03-02 02:54:20,611 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,611 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 又没动静了
+2026-03-02 02:54:20,611 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 又没动静了
+2026-03-02 02:54:21,142 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477740795091226704/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:54:21,347 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:21,360 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:22,173 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:22,186 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:22,998 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:23,012 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:23,824 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:23,839 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:24,653 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:24,668 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:25,481 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:25,494 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:26,309 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:26,325 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:27,135 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:27,148 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:27,962 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:27,974 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:28,786 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:28,801 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:29,615 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:29,628 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:30,443 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:30,456 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:31,269 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:31,285 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:32,096 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:32,110 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:32,923 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:32,937 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:33,750 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:33,765 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:34,577 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:34,591 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:35,405 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:35,419 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:36,233 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:36,245 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:36,757 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:37,572 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:37,586 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:38,397 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:38,409 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:39,221 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:39,232 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:40,043 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:40,056 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:40,868 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:40,880 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:41,693 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:41,708 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:42,521 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:42,535 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:43,347 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:43,360 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:44,173 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:44,186 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:45,000 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:45,015 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:45,827 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:45,839 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:46,654 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:46,669 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:47,482 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:47,496 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:48,310 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:48,323 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:49,138 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:49,151 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:49,964 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:49,978 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:50,792 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:50,806 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:51,619 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:51,632 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:52,446 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:52,461 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:53,273 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:53,285 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:54,098 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:54,110 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:54,622 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:55,436 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:55,450 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:56,263 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:56,279 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:57,091 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:57,105 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:57,919 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:57,931 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:58,743 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:58,757 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:54:59,571 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:54:59,584 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:00,398 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:00,412 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:01,225 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:01,237 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:02,049 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:02,063 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:02,877 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:02,891 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:03,705 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:03,720 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:04,534 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:04,546 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:05,360 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:05,374 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:06,189 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:06,205 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:07,022 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:07,036 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:07,848 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:07,858 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:08,670 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:08,679 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:09,490 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:09,499 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:10,310 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:10,319 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:11,131 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:11,143 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:11,953 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:11,963 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:12,773 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:12,783 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:13,596 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:13,611 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:14,425 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:14,440 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:15,253 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:15,268 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:16,082 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:16,094 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:16,908 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:16,922 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:17,736 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:17,750 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:18,564 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:18,574 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:19,385 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:19,397 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:20,210 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:20,224 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:21,038 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:21,052 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:21,865 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:21,880 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:22,694 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:22,708 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:23,520 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:23,532 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:24,345 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:24,359 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:25,172 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:25,184 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:25,996 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:26,010 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:26,825 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:26,839 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:27,652 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:27,664 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:28,479 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:28,491 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:29,305 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:29,319 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:30,133 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:30,145 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:30,959 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:30,972 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:31,785 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:31,800 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:32,612 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:32,626 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:33,439 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:33,454 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:34,268 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:34,282 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:35,095 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:35,109 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:35,922 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:35,934 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:36,747 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:36,761 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:37,576 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:37,589 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:38,403 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:38,419 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:38,933 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:39,753 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:39,769 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:40,583 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:40,597 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:41,409 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:41,423 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:42,236 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:42,249 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:43,063 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:43,078 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:43,894 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:43,909 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:44,724 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:44,738 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:45,553 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:45,566 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:46,381 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:46,396 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:47,210 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:47,224 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:48,038 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:48,051 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:48,865 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:48,876 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:49,690 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:49,704 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:50,519 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:50,532 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:51,347 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:51,361 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:52,175 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:52,187 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:53,003 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:53,016 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:53,830 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:53,842 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:54,654 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:54,668 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:55,482 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:55,496 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:56,309 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:56,323 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:57,139 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:57,154 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:57,969 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:57,983 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:58,797 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:58,811 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:55:59,625 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:55:59,638 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:00,452 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:00,465 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:01,280 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:01,291 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:02,104 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:02,118 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:02,932 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:02,946 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:03,762 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:03,777 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:04,590 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:04,605 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:05,419 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:05,434 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:06,247 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:06,262 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:07,076 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:07,090 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:07,904 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:07,917 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:08,731 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:08,744 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:09,560 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:09,574 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:10,388 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:10,402 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:11,217 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:11,231 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:12,045 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:12,059 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:12,874 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:12,889 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:13,703 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:13,717 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:14,533 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:14,548 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:15,363 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:15,377 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:16,191 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:16,202 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:17,014 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:17,028 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:17,842 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:17,855 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:18,668 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:18,680 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:19,495 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:19,509 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:20,324 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:20,338 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:21,154 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:21,168 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:21,981 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:21,993 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:22,807 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:22,824 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:23,639 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:23,653 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:24,468 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:24,483 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:25,298 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:25,311 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:26,126 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:26,138 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:26,952 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:26,966 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:27,779 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:27,792 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:28,607 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:28,622 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:29,437 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:29,453 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:30,269 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:30,283 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:31,098 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:31,113 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:31,928 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:31,943 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:32,758 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:32,773 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:33,587 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:33,600 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:34,415 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:34,429 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:35,245 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:35,259 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:36,072 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:36,086 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:36,901 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:36,914 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:37,728 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:37,741 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:38,555 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:38,569 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:39,383 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:39,400 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:40,216 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:40,231 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:41,044 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:41,056 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:41,871 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:41,885 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:42,698 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:42,713 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:43,527 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:43,543 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:44,359 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:44,371 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:45,186 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:45,201 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:46,015 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:46,029 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:46,843 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:46,866 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:47,377 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:48,191 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:48,203 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:49,016 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:49,028 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:49,842 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:49,857 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:50,670 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:50,683 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:51,496 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:51,511 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:52,025 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:52,843 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:52,857 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:53,669 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:53,683 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:54,498 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:54,512 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:55,325 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:55,339 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:56,153 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:56,166 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:56,979 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:56,992 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:57,805 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:57,817 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:58,629 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:58,643 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:56:59,456 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:56:59,470 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:00,284 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:00,298 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:01,110 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:01,122 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:01,934 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:01,947 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:02,760 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:02,775 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:03,588 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:03,601 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:04,415 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:04,429 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:05,241 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:05,255 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:06,069 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:06,078 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:06,891 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:06,901 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:07,711 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:07,724 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:08,536 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:08,548 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:09,360 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:09,374 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:10,187 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:10,200 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:11,013 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:11,025 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:11,839 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:11,852 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:12,665 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:12,679 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:13,494 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:13,507 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:14,320 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:14,335 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:15,149 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:15,164 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:15,978 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:15,991 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:16,803 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:16,815 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:17,630 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:17,642 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:18,456 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:18,470 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:19,283 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:19,297 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:20,110 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:20,122 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:20,936 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:20,950 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:21,764 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:21,778 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:22,590 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:22,604 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:23,419 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:23,433 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:24,245 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:24,260 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:25,075 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:25,089 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:25,902 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:25,915 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:26,729 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:26,743 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:27,557 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:27,572 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:28,384 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:28,398 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:29,210 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:29,223 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:30,037 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:30,051 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:30,865 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:30,879 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:31,693 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:31,706 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:32,520 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:32,534 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:33,348 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:33,362 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:34,174 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:34,188 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:35,000 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:35,012 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:35,825 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:35,839 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:36,653 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:36,667 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:37,481 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:37,496 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:38,309 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:38,323 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:39,135 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:39,148 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:39,961 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:39,977 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:40,790 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:40,803 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:41,617 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:41,630 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:42,445 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:42,458 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:43,271 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:43,285 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:44,096 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:44,109 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:44,922 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:44,936 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:45,748 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:45,759 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:46,571 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:46,583 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:47,396 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:47,410 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:48,222 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:48,237 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:49,051 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:49,066 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:49,881 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:49,895 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:50,707 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:50,719 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:51,532 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:51,542 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:52,054 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:52,864 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:52,876 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:53,689 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:53,704 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:54,519 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:54,533 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:55,346 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:55,358 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:55,869 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:56,685 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:56,699 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:57,512 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:57,525 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:58,339 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:58,354 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:59,167 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:57:59,180 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:57:59,994 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:00,008 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:00,823 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:00,835 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:01,649 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:01,663 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:02,476 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:02,487 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:03,299 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:03,312 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:04,125 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:04,137 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:04,951 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:04,965 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:05,779 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:05,793 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:06,608 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:06,623 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:07,437 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:07,450 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:08,262 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:08,277 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:09,091 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:09,103 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:09,915 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:09,928 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:10,741 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:10,754 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:11,567 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:11,581 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:12,395 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:12,411 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:13,226 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:13,240 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:14,053 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:14,066 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:14,880 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:14,895 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:15,707 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:15,722 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:16,535 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:16,545 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:17,358 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:17,373 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:18,187 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:18,201 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:19,014 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:19,026 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:19,839 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:19,851 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:20,664 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:20,679 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:21,494 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:21,504 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:22,318 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:22,332 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:23,146 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:23,160 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:23,974 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:23,989 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:24,802 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:24,816 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:25,629 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:25,642 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:26,457 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:26,469 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:27,282 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:27,295 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:28,109 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:28,121 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:28,935 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:28,950 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:29,763 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:29,777 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:30,591 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:30,604 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:31,416 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:31,429 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:32,242 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:32,257 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:33,070 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:33,085 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:33,898 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:33,912 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:34,725 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:34,740 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:35,555 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:35,570 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:36,383 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:36,397 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:37,209 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:37,222 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:38,035 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:38,048 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:38,862 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:38,877 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:39,690 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:39,703 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:40,516 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:40,530 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:41,345 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:41,360 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:42,173 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:42,187 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:43,000 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:43,010 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:43,821 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:43,835 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:44,649 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:44,664 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:45,477 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:45,491 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:46,305 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:46,316 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:47,129 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:47,142 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:47,957 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:47,969 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:48,783 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:48,796 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:49,609 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:49,621 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:50,435 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:50,449 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:51,261 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:51,275 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:52,091 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:52,105 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:52,917 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:52,929 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:53,744 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:53,758 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:54,572 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:54,586 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:55,399 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:55,412 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:56,225 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:56,237 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:57,051 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:57,061 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:57,873 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:57,887 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:58,700 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:58,714 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:58:59,527 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:58:59,537 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:00,048 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:00,861 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:00,871 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:01,381 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:02,193 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:02,203 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:03,014 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:03,028 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:03,843 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:03,856 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:04,671 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:04,681 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:05,492 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:05,502 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:06,312 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:06,323 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:07,134 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:07,144 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:07,957 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:07,970 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:08,784 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:08,797 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:09,610 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:09,624 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:10,437 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:10,448 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:11,260 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:11,274 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:12,087 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:12,101 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:12,914 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:12,927 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:13,739 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:13,754 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:14,567 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:14,581 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:15,394 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:15,408 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:16,222 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:16,236 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:17,050 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:17,064 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:17,578 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:18,390 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:18,403 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:19,215 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:19,230 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:19,742 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:20,553 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:20,566 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:21,379 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:21,395 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:22,208 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:22,218 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:23,031 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:23,044 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:23,859 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:23,873 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:24,687 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:24,700 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:25,513 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:25,526 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:26,340 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:26,356 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:27,168 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:27,181 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:27,995 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:28,009 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:28,821 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:28,835 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:29,649 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:29,663 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:30,475 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:30,488 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:31,302 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:31,315 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:32,128 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:32,140 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:32,953 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:32,967 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:33,782 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:33,796 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:34,610 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:34,622 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:35,435 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:35,447 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:35,960 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:36,775 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:36,789 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:37,603 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:37,617 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:38,430 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:38,441 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:39,253 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:39,264 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:40,076 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:40,090 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:40,931 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:40,943 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:41,758 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:41,773 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:42,286 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:43,104 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:43,116 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:43,931 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:43,945 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:44,759 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:44,772 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:45,285 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:46,103 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:46,117 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:46,931 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:46,943 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:47,757 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:47,771 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:48,584 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:48,599 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:49,412 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:49,423 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:59:50,236 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:59:50,247 [INFO] src.poller: 会话 default 已终止，停止轮询
