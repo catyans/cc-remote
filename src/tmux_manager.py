@@ -154,12 +154,14 @@ class TmuxManager:
     # ------------------------------------------------------------------
 
     def send_keys(self, project: str, text: str, enter: bool = True) -> None:
-        """向 tmux 会话发送按键输入。"""
+        """向 tmux 会话发送按键输入。使用 -l 发送文本避免特殊键解析。"""
         name = self._session_name(project)
-        cmd = ["tmux", "send-keys", "-t", name, text]
+        if text:
+            # 用 -l (literal) 发送文本，避免 tmux 把文本中的特殊字符当按键
+            self._run(["tmux", "send-keys", "-t", name, "-l", text])
         if enter:
-            cmd.append("Enter")
-        self._run(cmd)
+            # 单独发送 Enter 键
+            self._run(["tmux", "send-keys", "-t", name, "Enter"])
         logger.debug("send_keys -> %s: %s", name, text[:80])
 
     def send_ctrl_c(self, project: str = "default") -> None:

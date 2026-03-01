@@ -5230,3 +5230,25 @@ discord.app_commands.errors.CommandInvokeError: Command 'start' raised an except
 2026-03-02 02:44:23,419 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
 2026-03-02 02:44:24,232 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
 2026-03-02 02:44:24,247 [INFO] src.poller: 会话 default 已终止，停止轮询
+2026-03-02 02:46:34,644 [INFO] __main__: ==================================================
+2026-03-02 02:46:34,644 [INFO] __main__: CC-Remote 启动中...
+2026-03-02 02:46:34,644 [INFO] __main__: ==================================================
+2026-03-02 02:46:34,647 [INFO] src.config: 配置加载完成: /Users/wangyanshu/Desktop/cc-remote/config.yaml
+2026-03-02 02:46:34,647 [WARNING] discord.client: PyNaCl is not installed, voice will NOT be supported
+2026-03-02 02:46:34,647 [INFO] src.bot: 正在启动 CC-Remote Bot...
+2026-03-02 02:46:34,648 [DEBUG] asyncio: Using selector: KqueueSelector
+2026-03-02 02:46:38,656 [INFO] src.bot: Bot 已上线: cc-remote (ID: 1477721266419925022)
+2026-03-02 02:46:38,657 [INFO] src.commands: 已注册 Claude Code 命令集
+2026-03-02 02:46:39,154 [INFO] src.bot: 已同步 8 个斜杠命令
+2026-03-02 02:47:24,685 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,685 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,686 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:47:24,686 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,686 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
+2026-03-02 02:47:24,686 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=你能自己测试吗 <@1473646646893084874>
