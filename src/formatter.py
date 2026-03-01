@@ -37,10 +37,26 @@ _CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 # ------------------------------------------------------------------
 
 # 框线字符
-_BOX_CHARS = set("╭╮╰╯│─┌┐└┘├┤┬┴┼═║╔╗╚╝╠╣╦╩╬")
+_BOX_CHARS = set("╭╮╰╯│─┌┐└┘├┤┬┴┼═║╔╗╚╝╠╣╦╩╬╌▐▛▜▌▝▘█▀▄░▒▓")
 
 # TUI 欢迎界面 / 状态行关键词
 _TUI_KEYWORDS = [
+    "ctrl+g",
+    "Enter to select",
+    "Tab/Arrow",
+    "Enter to confirm",
+    "Esc to cancel",
+    "Tab to amend",
+    "ctrl+e to explain",
+    "Checking for updates",
+    "Press Ctrl-C",
+    "code.claude.com",
+    "Bypass Permissions",
+    "sandboxed container",
+    "accept all responsibility",
+    "Security guide",
+    "Quick safety check",
+
     "Welcome back",
     "Welcome to",
     "Claude Code",
@@ -153,6 +169,10 @@ def is_tui_line(line: str) -> bool:
 
     # 分隔线
     if _SEPARATOR_RE.match(line):
+        return True
+
+    # ❯ 提示行
+    if stripped.startswith(chr(10095)) or stripped.startswith(chr(8250)):
         return True
 
     # TUI 关键词
