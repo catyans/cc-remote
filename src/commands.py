@@ -94,14 +94,17 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        await interaction.response.defer()
+        try:
+            await interaction.response.defer()
+        except discord.errors.HTTPException:
+            return  # 已响应过，跳过
         self._audit_log(interaction.user, "start", project)
 
         # 获取项目工作目录
         cwd = self.config.projects.get(project, self.config.tmux.default_cwd)
 
         try:
-            info = self.tmux.start_session(project, cwd)
+            info = await asyncio.to_thread(self.tmux.start_session, project, cwd)
             self.poller.start(project)
             # 通知 bot 绑定频道
             if hasattr(self.bot, '_cc_bot'):
@@ -284,7 +287,7 @@ class ClaudeCog(commands.Cog):
 
         await interaction.response.defer()
         try:
-            info = self.tmux.start_session(name, cwd)
+            info = await asyncio.to_thread(self.tmux.start_session, name, cwd)
             self.poller.start(name)
             await interaction.followup.send(
                 f"✅ 已切换到项目 `{name}`\n📂 目录: `{info.cwd}`"

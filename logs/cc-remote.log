@@ -3913,3 +3913,631 @@ discord.app_commands.errors.CommandInvokeError: Command 'start' raised an except
 2026-03-02 02:27:21,329 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 把细节打磨好，还有选择的用discord的选择按钮，不
 2026-03-02 02:27:21,329 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 把细节打磨好，还有选择的用discord的选择按钮，不
 2026-03-02 02:27:21,330 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:28:44,464 [INFO] __main__: ==================================================
+2026-03-02 02:28:44,464 [INFO] __main__: CC-Remote 启动中...
+2026-03-02 02:28:44,464 [INFO] __main__: ==================================================
+2026-03-02 02:28:44,467 [INFO] src.config: 配置加载完成: /Users/wangyanshu/Desktop/cc-remote/config.yaml
+2026-03-02 02:28:44,467 [WARNING] discord.client: PyNaCl is not installed, voice will NOT be supported
+2026-03-02 02:28:44,467 [INFO] src.bot: 正在启动 CC-Remote Bot...
+2026-03-02 02:28:44,468 [DEBUG] asyncio: Using selector: KqueueSelector
+2026-03-02 02:28:48,139 [INFO] src.bot: Bot 已上线: cc-remote (ID: 1477721266419925022)
+2026-03-02 02:28:48,140 [INFO] src.commands: 已注册 Claude Code 命令集
+2026-03-02 02:28:48,586 [INFO] src.bot: 已同步 8 个斜杠命令
+2026-03-02 02:30:56,773 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:30:56,773 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:30:56,775 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:30:56,779 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:30:56,966 [INFO] src.commands: AUDIT: 2026-03-02T02:30:56.966110 | lovelcat#0 | start | default
+2026-03-02 02:30:56,966 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:30:56,980 [DEBUG] src.tmux_manager: exec: tmux new-session -d -s cc-remote-default -x 220 -y 50 -c /Users/wangyanshu/Desktop/cctest claude --dangerously-skip-permissions
+2026-03-02 02:30:57,520 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p
+2026-03-02 02:30:58,032 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p
+2026-03-02 02:30:58,545 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p
+2026-03-02 02:30:58,555 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default Yes, I accept Enter
+2026-03-02 02:30:58,566 [INFO] src.tmux_manager: 已自动接受 bypass 确认: cc-remote-default
+2026-03-02 02:30:58,567 [INFO] src.tmux_manager: 已启动会话: cc-remote-default (cwd=/Users/wangyanshu/Desktop/cctest, skip-permissions)
+2026-03-02 02:30:58,567 [INFO] src.poller: 开始轮询: default
+2026-03-02 02:30:58,568 [DEBUG] src.poller: 轮询循环启动: default
+2026-03-02 02:30:59,371 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:30:59,385 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:01,398 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:02,757 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:02,774 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:03,588 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:03,603 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:04,416 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:04,431 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:05,246 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:05,262 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:06,075 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:06,090 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:06,905 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:06,920 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:08,536 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:08,549 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:10,166 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:10,181 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:11,798 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:11,814 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:13,432 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:13,447 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:15,061 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:15,077 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:16,693 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:16,709 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:18,324 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:18,339 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:19,954 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:19,968 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:21,584 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:21,598 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:23,213 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:23,228 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:24,845 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:24,859 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:26,476 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:26,490 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:28,105 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:28,119 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:29,735 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:29,748 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:31,363 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:31,376 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:32,992 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:33,007 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:34,623 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:34,638 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:36,252 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:36,267 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:37,867 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:31:37,868 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:37,869 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:31:37,869 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:31:37,869 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:37,869 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:31:37,870 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:37,883 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:37,883 [INFO] src.commands: AUDIT: 2026-03-02T02:31:37.883578 | lovelcat#0 | message | <@1473646646893084874> 咋回事
+2026-03-02 02:31:37,883 [INFO] src.commands: AUDIT: 2026-03-02T02:31:37.883706 | lovelcat#0 | message | <@1473646646893084874> 咋回事
+2026-03-02 02:31:37,884 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 咋回事 Enter
+2026-03-02 02:31:37,884 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 咋回事 Enter
+2026-03-02 02:31:37,887 [INFO] src.commands: AUDIT: 2026-03-02T02:31:37.887801 | lovelcat#0 | message | <@1473646646893084874> 咋回事
+2026-03-02 02:31:37,889 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 咋回事 Enter
+2026-03-02 02:31:37,897 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:37,898 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 咋回事
+2026-03-02 02:31:37,898 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 咋回事
+2026-03-02 02:31:37,903 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 咋回事
+2026-03-02 02:31:38,393 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477735078330241137/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:31:38,393 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477735078330241137/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:31:39,033 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477735078330241137/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:31:39,512 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:39,526 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:41,141 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:41,156 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:42,770 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:42,785 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:44,399 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:44,414 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:46,027 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:46,042 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:47,658 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:47,673 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:49,288 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:49,302 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:50,920 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:50,933 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:31:52,549 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:31:52,562 [INFO] src.poller: 会话 default 已终止，停止轮询
+2026-03-02 02:32:18,266 [INFO] __main__: ==================================================
+2026-03-02 02:32:18,266 [INFO] __main__: CC-Remote 启动中...
+2026-03-02 02:32:18,267 [INFO] __main__: ==================================================
+2026-03-02 02:32:18,269 [INFO] src.config: 配置加载完成: /Users/wangyanshu/Desktop/cc-remote/config.yaml
+2026-03-02 02:32:18,269 [WARNING] discord.client: PyNaCl is not installed, voice will NOT be supported
+2026-03-02 02:32:18,270 [INFO] src.bot: 正在启动 CC-Remote Bot...
+2026-03-02 02:32:18,270 [DEBUG] asyncio: Using selector: KqueueSelector
+2026-03-02 02:32:22,116 [INFO] src.bot: Bot 已上线: cc-remote (ID: 1477721266419925022)
+2026-03-02 02:32:22,116 [INFO] src.commands: 已注册 Claude Code 命令集
+2026-03-02 02:32:22,604 [INFO] src.bot: 已同步 8 个斜杠命令
+2026-03-02 02:34:41,282 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:34:41,284 [WARNING] discord.webhook.async_: Webhook ID 1477735845434753288 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:34:41,284 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:34:41,285 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:34:41,284 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:34:41,391 [INFO] src.commands: AUDIT: 2026-03-02T02:34:41.391487 | lovelcat#0 | start | default
+2026-03-02 02:34:41,392 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:41,404 [DEBUG] src.tmux_manager: exec: tmux new-session -d -s cc-remote-default -x 220 -y 50 -c /Users/wangyanshu/Desktop/cctest claude --dangerously-skip-permissions
+2026-03-02 02:34:41,932 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 226, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+2026-03-02 02:34:42,076 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p
+2026-03-02 02:34:42,591 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p
+2026-03-02 02:34:42,604 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default Yes, I accept Enter
+2026-03-02 02:34:42,616 [INFO] src.tmux_manager: 已自动接受 bypass 确认: cc-remote-default
+2026-03-02 02:34:42,616 [INFO] src.tmux_manager: 已启动会话: cc-remote-default (cwd=/Users/wangyanshu/Desktop/cctest, skip-permissions)
+2026-03-02 02:34:42,617 [INFO] src.poller: 开始轮询: default
+2026-03-02 02:34:42,618 [DEBUG] src.poller: 轮询循环启动: default
+2026-03-02 02:34:43,420 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:43,434 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:45,448 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:47,046 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:47,062 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:47,876 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:47,892 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:48,707 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:48,722 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:49,536 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:49,550 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:50,365 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:50,379 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:51,193 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:51,208 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:52,823 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:52,837 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:54,451 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:54,466 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:56,079 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:56,094 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:57,709 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:57,724 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:34:59,340 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:34:59,353 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:00,967 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:00,980 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:02,594 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:02,608 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:04,224 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:04,239 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:05,854 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:05,867 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:07,482 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:07,497 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:08,826 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:35:08,826 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:35:08,827 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:08,828 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:35:08,828 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:08,830 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:35:08,830 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 咋回事
+2026-03-02 02:35:08,830 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:08,841 [INFO] src.commands: AUDIT: 2026-03-02T02:35:08.840909 | lovelcat#0 | message | <@1473646646893084874> 咋回事
+2026-03-02 02:35:08,841 [INFO] src.commands: AUDIT: 2026-03-02T02:35:08.841300 | lovelcat#0 | message | <@1473646646893084874> 咋回事
+2026-03-02 02:35:08,841 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 咋回事 Enter
+2026-03-02 02:35:08,842 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 咋回事 Enter
+2026-03-02 02:35:08,843 [INFO] src.commands: AUDIT: 2026-03-02T02:35:08.842991 | lovelcat#0 | message | <@1473646646893084874> 咋回事
+2026-03-02 02:35:08,843 [DEBUG] src.tmux_manager: exec: tmux send-keys -t cc-remote-default <@1473646646893084874> 咋回事 Enter
+2026-03-02 02:35:08,854 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 咋回事
+2026-03-02 02:35:08,854 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 咋回事
+2026-03-02 02:35:08,855 [DEBUG] src.tmux_manager: send_keys -> cc-remote-default: <@1473646646893084874> 咋回事
+2026-03-02 02:35:09,111 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:09,122 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:09,409 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477735963651473481/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:35:09,420 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477735963651473481/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:35:10,102 [WARNING] discord.http: We are being rate limited. PUT https://discord.com/api/v10/channels/1477710029468729568/messages/1477735963651473481/reactions/%F0%9F%93%A8/@me responded with 429. Retrying in 0.30 seconds.
+2026-03-02 02:35:10,735 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:10,749 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:12,363 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:12,379 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:13,992 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:14,006 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:15,619 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:15,635 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:17,249 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:17,265 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:18,882 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:18,898 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:20,512 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:20,528 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:22,145 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:22,160 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:23,776 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:23,789 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:25,405 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:25,420 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:27,035 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:27,049 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:28,663 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:28,676 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:30,293 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:30,306 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:31,920 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:31,935 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:33,549 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:33,564 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:35,180 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:35,194 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:36,809 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:36,822 [DEBUG] src.tmux_manager: exec: tmux capture-pane -t cc-remote-default -p -S -200
+2026-03-02 02:35:38,438 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:35:38,452 [INFO] src.poller: 会话 default 已终止，停止轮询
+2026-03-02 02:36:01,652 [INFO] __main__: ==================================================
+2026-03-02 02:36:01,652 [INFO] __main__: CC-Remote 启动中...
+2026-03-02 02:36:01,652 [INFO] __main__: ==================================================
+2026-03-02 02:36:01,655 [INFO] src.config: 配置加载完成: /Users/wangyanshu/Desktop/cc-remote/config.yaml
+2026-03-02 02:36:01,655 [WARNING] discord.client: PyNaCl is not installed, voice will NOT be supported
+2026-03-02 02:36:01,655 [INFO] src.bot: 正在启动 CC-Remote Bot...
+2026-03-02 02:36:01,655 [DEBUG] asyncio: Using selector: KqueueSelector
+2026-03-02 02:36:05,393 [INFO] src.bot: Bot 已上线: cc-remote (ID: 1477721266419925022)
+2026-03-02 02:36:05,394 [INFO] src.commands: 已注册 Claude Code 命令集
+2026-03-02 02:36:05,839 [INFO] src.bot: 已同步 8 个斜杠命令
+2026-03-02 02:36:32,092 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:36:32,098 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:36:32,099 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:36:32,120 [WARNING] discord.webhook.async_: Webhook ID 1477736310700773520 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:36:32,125 [WARNING] discord.webhook.async_: Webhook ID 1477736310700773520 is rate limited. Retrying in 0.30 seconds.
+2026-03-02 02:36:32,126 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2026-03-02 02:36:32,179 [INFO] src.commands: AUDIT: 2026-03-02T02:36:32.179434 | lovelcat#0 | start | default
+2026-03-02 02:36:32,179 [ERROR] src.commands: 启动会话失败
+Traceback (most recent call last):
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 104, in cmd_start
+    info = await asyncio.to_thread(self.tmux.start_session, project, cwd)
+                 ^^^^^^^
+NameError: name 'asyncio' is not defined. Did you forget to import 'asyncio'
+2026-03-02 02:36:32,754 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 226, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+2026-03-02 02:36:32,776 [ERROR] discord.app_commands.tree: Ignoring exception in command 'start'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 858, in _do_call
+    return await self._callback(self.binding, interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangyanshu/Desktop/cc-remote/src/commands.py", line 97, in cmd_start
+    await interaction.response.defer()
+  File "/usr/local/lib/python3.12/site-packages/discord/interactions.py", line 892, in defer
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/webhook/async_.py", line 226, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1302, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'start' raised an exception: HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+2026-03-02 02:37:17,645 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 启动失败，你能自己调试吗
+2026-03-02 02:37:17,645 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 启动失败，你能自己调试吗
+2026-03-02 02:37:17,645 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 启动失败，你能自己调试吗
+2026-03-02 02:37:17,645 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 启动失败，你能自己调试吗
+2026-03-02 02:37:17,645 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 启动失败，你能自己调试吗
+2026-03-02 02:37:17,645 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:37:17,645 [INFO] src.bot: on_message: user=lovelcat channel=1477710029468729568 content=<@1473646646893084874> 启动失败，你能自己调试吗
+2026-03-02 02:37:17,645 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default
+2026-03-02 02:37:17,645 [DEBUG] src.tmux_manager: exec: tmux has-session -t cc-remote-default

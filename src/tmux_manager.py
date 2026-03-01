@@ -70,11 +70,11 @@ class TmuxManager:
         # 先注册会话信息，避免竞态（send_keys/poller 可能在创建后立即访问）
         info = SessionInfo(name=name, project=project, cwd=resolved_cwd, alive=True)
         self.sessions[project] = info
-
+        
         # 创建 tmux session，直接指定工作目录和启动命令
         claude_cmd = self._claude_bin()
-        # 使用 --dangerously-skip-permissions 跳过权限确认
-        launch_cmd = f"{claude_cmd} --dangerously-skip-permissions"
+        # 使用 跳过权限确认
+        launch_cmd = f"{claude_cmd}"
         self._run([
             "tmux", "new-session",
             "-d",               # 后台运行
@@ -91,8 +91,8 @@ class TmuxManager:
         logger.info("已启动会话: %s (cwd=%s, skip-permissions)", name, resolved_cwd)
         return info
 
-    def _auto_accept_bypass(self, session_name: str, timeout: float = 10.0) -> None:
-        """等待 --dangerously-skip-permissions 的确认提示，自动输入 'Yes, I accept'。"""
+    def _auto_accept_bypass(self, session_name: str, timeout: float = 15.0) -> None:
+        """自动接受 Claude Code 启动时的所有确认提示（trust folder + bypass permissions）。"""
         start = time.time()
         while time.time() - start < timeout:
             time.sleep(0.5)
@@ -101,14 +101,31 @@ class TmuxManager:
             ], check=False)
             if result.returncode != 0:
                 continue
-            content = result.stdout.lower()
-            # 检测 bypass 确认提示
-            if "i accept" in content or "skip permissions" in content or "bypass" in content:
-                # 发送确认文本
-                self._run(["tmux", "send-keys", "-t", session_name, "Yes, I accept", "Enter"])
-                logger.info("已自动接受 bypass 确认: %s", session_name)
+            output = result.stdout
+            
+            # Trust folder: ❯ 1. Yes, I trust this folder → Enter
+            if "Yes, I trust" in output and "Enter to confirm" in output:
+                self._run(["tmux", "send-keys", "-t", session_name, "Enter"])
+                logger.info("自动确认 trust folder: %s", session_name)
+                time.sleep(2)
+                continue
+            
+            # Bypass permissions: 需要选 2. Yes, I accept
+            if "Yes, I accept" in output and "Enter to confirm" in output:
+                # ❯ 默认在 1. No, 需要 Down 移到 2
+                self._run(["tmux", "send-keys", "-t", session_name, "Down"])
+                time.sleep(0.3)
+                self._run(["tmux", "send-keys", "-t", session_name, "Enter"])
+                logger.info("自动确认 bypass permissions: %s", session_name)
+                time.sleep(2)
+                continue
+            
+            # Claude Code 已就绪
+            if "for shortcuts" in output:
+                logger.info("Claude Code 已就绪: %s", session_name)
                 return
-        logger.warning("未检测到 bypass 确认提示（超时）: %s", session_name)
+        
+        logger.warning("等待 Claude Code 启动超时: %s", session_name)
 
     def stop_session(self, project: str = "default") -> bool:
         """关闭指定项目的 tmux 会话。"""
