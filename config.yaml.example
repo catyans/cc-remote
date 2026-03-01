@@ -1,0 +1,46 @@
+# CC-Remote 配置文件
+# 复制此文件为 config.yaml 并填写实际值
+
+discord:
+  token: "YOUR_DISCORD_BOT_TOKEN"
+  # 允许使用 bot 的用户 ID 白名单（留空则不限制）
+  allowed_users: []
+  # 允许使用 bot 的频道 ID 白名单（留空则不限制）
+  allowed_channels: []
+
+tmux:
+  session_prefix: "cc-remote"
+  # claude CLI 路径，留空则使用 PATH 中的 claude
+  claude_path: ""
+  # 默认工作目录
+  default_cwd: "~"
+  # capture-pane 历史行数
+  history_limit: 5000
+
+poller:
+  # 轮询间隔（秒）
+  interval: 0.8
+  # 输出稳定后的额外等待时间（秒），避免截断不完整输出
+  settle_time: 0.5
+  # 单次最大发送字符数
+  max_chunk_size: 1800
+
+security:
+  # 需要二次确认的危险关键词
+  dangerous_keywords:
+    - "rm -rf"
+    - "DROP TABLE"
+    - "DELETE FROM"
+    - "format"
+    - "mkfs"
+    - "dd if="
+  # 无操作超时提醒（秒）
+  idle_timeout: 300
+  # 启用审计日志
+  audit_log: true
+
+projects:
+  # 预定义项目，可通过 /project 切换
+  # 项目名: 工作目录
+  default: "~"
+  # example: "~/projects/example"
