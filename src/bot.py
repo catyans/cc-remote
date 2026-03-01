@@ -59,6 +59,7 @@ class CCRemoteBot:
         async def on_ready():
             logger.info("Bot 已上线: %s (ID: %s)", self.bot.user.name, self.bot.user.id)
             # 注册斜杠命令
+            self.bot._cc_bot = self  # 让 Cog 能访问频道绑定
             self._cog = await setup_commands(self.bot, self.tmux, self.poller, self.config)
             try:
                 synced = await self.bot.tree.sync()
@@ -71,6 +72,7 @@ class CCRemoteBot:
             self.poller.on_confirm = self._on_poller_confirm
             self.poller.on_tool_status = self._on_poller_tool_status
             self.poller.on_idle_timeout = self._on_poller_idle_timeout
+            self.poller.on_menu = self._on_poller_menu
 
             # 设置状态
             await self.bot.change_presence(
@@ -95,6 +97,7 @@ class CCRemoteBot:
 
             # 只处理已绑定频道或 allowed_channels 中的消息
             channel_id = message.channel.id
+            logger.info("on_message: user=%s channel=%s content=%s", message.author.name, channel_id, message.content[:50])
             if (
                 channel_id not in self._project_by_channel
                 and (
@@ -236,6 +239,21 @@ class CCRemoteBot:
             color=discord.Color.blue(),
         )
         await channel.send(embed=embed)
+
+
+    async def _on_poller_menu(self, project: str, options: list[dict]) -> None:
+        """检测到选项菜单时的回调，发送 Discord 按钮。"""
+        channel_id = self._channel_bindings.get(project)
+        if not channel_id:
+            return
+        channel = self.bot.get_channel(channel_id)
+        if not channel:
+            return
+
+        from .commands import MenuSelectView
+        view = MenuSelectView(self.tmux, project, options)
+        desc = "\n".join(f"**{o['num']}.** {o['label']}" + (f"\n   {o['desc']}" if o.get('desc') else "") for o in options)
+        await channel.send(f"🔢 **请选择：**\n{desc}", view=view)
 
     async def _on_poller_idle_timeout(self, project: str) -> None:
         """空闲超时回调。"""

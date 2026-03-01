@@ -15,6 +15,7 @@ from .formatter import (
     detect_tool_running,
     detect_diff,
     split_message,
+    filter_output,
 )
 from .config import PollerConfig
 
@@ -56,6 +57,12 @@ class OutputPoller:
         self.on_confirm = None
         self.on_tool_status = None
         self.on_idle_timeout = None
+        self.on_menu = None
+
+        # 最小增量长度（太短不发送）
+        self.min_delta_len = 10
+        # 连续空输出计数（避免频繁检测）
+        self._empty_count: dict[str, int] = {}
 
         # 控制标志
         self._tasks: dict[str, asyncio.Task] = {}
@@ -68,6 +75,7 @@ class OutputPoller:
         self._last_output[project] = ""
         self._last_activity[project] = datetime.now()
         self._sent_confirms[project] = ""
+        self._empty_count[project] = 0
         self._history.setdefault(project, deque(maxlen=50))
         self._tasks[project] = asyncio.create_task(self._poll_loop(project))
         logger.info("开始轮询: %s", project)
@@ -109,9 +117,15 @@ class OutputPoller:
                 delta = self._compute_delta(last, formatted)
 
                 if not delta:
+                    self._empty_count[project] = self._empty_count.get(project, 0) + 1
+                    # 连续多次空输出时减少检测频率
+                    if self._empty_count[project] > 5:
+                        await asyncio.sleep(self.config.interval)
                     # 检查空闲超时
                     await self._check_idle(project)
                     continue
+
+                self._empty_count[project] = 0
 
                 # 等待输出稳定（避免发送不完整内容）
                 await asyncio.sleep(self.config.settle_time)
@@ -119,7 +133,7 @@ class OutputPoller:
                 formatted2 = format_output(raw_output2)
                 delta = self._compute_delta(last, formatted2)
 
-                if not delta:
+                if not delta or len(delta.strip()) < self.min_delta_len:
                     continue
 
                 self._last_output[project] = formatted2
@@ -138,6 +152,12 @@ class OutputPoller:
                     self._sent_confirms[project] = confirm_prompt
                     if self.on_confirm:
                         await self.on_confirm(project, confirm_prompt)
+
+                # 检测选项菜单
+                from .formatter import detect_menu_options
+                menu_options = detect_menu_options(delta)
+                if menu_options and len(menu_options) >= 2 and self.on_menu:
+                    await self.on_menu(project, menu_options)
 
                 # 检测工具运行状态
                 tool_name = detect_tool_running(delta)

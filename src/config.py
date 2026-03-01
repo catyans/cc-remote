@@ -35,7 +35,7 @@ class TmuxConfig:
 @dataclass
 class PollerConfig:
     interval: float = 0.8
-    settle_time: float = 0.5
+    settle_time: float = 2.0
     max_chunk_size: int = 1800
 
 

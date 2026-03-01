@@ -103,6 +103,10 @@ class ClaudeCog(commands.Cog):
         try:
             info = self.tmux.start_session(project, cwd)
             self.poller.start(project)
+            # 通知 bot 绑定频道
+            if hasattr(self.bot, '_cc_bot'):
+                self.bot._cc_bot._channel_bindings[project] = interaction.channel_id
+                self.bot._cc_bot._project_by_channel[interaction.channel_id] = project
             await interaction.followup.send(
                 f"✅ Claude Code 会话已启动\n"
                 f"📁 项目: `{project}`\n"
@@ -386,6 +390,45 @@ class DangerConfirmView(discord.ui.View):
         self.responded = True
         await interaction.response.edit_message(content="🚫 已取消", view=None)
 
+
+
+
+class MenuSelectView(discord.ui.View):
+    """Claude Code 选项菜单的 Discord Select 视图。"""
+
+    def __init__(self, tmux: TmuxManager, project: str, options: list[dict], timeout: float = 60):
+        super().__init__(timeout=timeout)
+        self.tmux = tmux
+        self.project = project
+        self.responded = False
+
+        # 动态创建按钮（最多5个，Discord限制）
+        for opt in options[:5]:
+            btn = discord.ui.Button(
+                label=f"{opt['num']}. {opt['label'][:40]}",
+                style=discord.ButtonStyle.primary if opt['num'] == '1' else discord.ButtonStyle.secondary,
+                custom_id=f"menu_{opt['num']}",
+            )
+            btn.callback = self._make_callback(opt['num'])
+            self.add_item(btn)
+
+    def _make_callback(self, num: str):
+        async def callback(interaction: discord.Interaction):
+            if self.responded:
+                await interaction.response.send_message("已选择", ephemeral=True)
+                return
+            self.responded = True
+            # 发送对应数字选择到 tmux
+            for _ in range(int(num) - 1):
+                self.tmux.send_keys(self.project, "Down", enter=False)
+                import asyncio
+                await asyncio.sleep(0.1)
+            self.tmux.send_keys(self.project, "", enter=True)  # Enter to confirm
+            await interaction.response.edit_message(
+                content=f"✅ 已选择: **{num}** (by {interaction.user.display_name})",
+                view=None,
+            )
+        return callback
 
 async def setup_commands(bot: commands.Bot, tmux: TmuxManager, poller: OutputPoller, config: AppConfig) -> ClaudeCog:
     """注册命令 Cog 到 bot。"""

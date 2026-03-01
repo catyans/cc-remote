@@ -7,6 +7,7 @@ import subprocess
 import shlex
 import logging
 import os
+import time
 from pathlib import Path
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -72,6 +73,8 @@ class TmuxManager:
 
         # 创建 tmux session，直接指定工作目录和启动命令
         claude_cmd = self._claude_bin()
+        # 使用 --dangerously-skip-permissions 跳过权限确认
+        launch_cmd = f"{claude_cmd} --dangerously-skip-permissions"
         self._run([
             "tmux", "new-session",
             "-d",               # 后台运行
@@ -79,11 +82,33 @@ class TmuxManager:
             "-x", "220",        # 窗口宽度（足够宽以避免折行）
             "-y", "50",         # 窗口高度
             "-c", resolved_cwd, # 工作目录
-            claude_cmd,         # 直接启动 claude
+            launch_cmd,         # 启动 claude（跳过权限）
         ])
 
-        logger.info("已启动会话: %s (cwd=%s)", name, resolved_cwd)
+        # 等待 bypass 确认提示出现，然后自动接受
+        self._auto_accept_bypass(name)
+
+        logger.info("已启动会话: %s (cwd=%s, skip-permissions)", name, resolved_cwd)
         return info
+
+    def _auto_accept_bypass(self, session_name: str, timeout: float = 10.0) -> None:
+        """等待 --dangerously-skip-permissions 的确认提示，自动输入 'Yes, I accept'。"""
+        start = time.time()
+        while time.time() - start < timeout:
+            time.sleep(0.5)
+            result = self._run([
+                "tmux", "capture-pane", "-t", session_name, "-p",
+            ], check=False)
+            if result.returncode != 0:
+                continue
+            content = result.stdout.lower()
+            # 检测 bypass 确认提示
+            if "i accept" in content or "skip permissions" in content or "bypass" in content:
+                # 发送确认文本
+                self._run(["tmux", "send-keys", "-t", session_name, "Yes, I accept", "Enter"])
+                logger.info("已自动接受 bypass 确认: %s", session_name)
+                return
+        logger.warning("未检测到 bypass 确认提示（超时）: %s", session_name)
 
     def stop_session(self, project: str = "default") -> bool:
         """关闭指定项目的 tmux 会话。"""

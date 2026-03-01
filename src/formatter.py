@@ -1,6 +1,6 @@
 """
 输出格式化模块
-处理 ANSI 转义码清理、spinner 过滤、代码块检测、消息分段。
+处理 ANSI 转义码清理、TUI 装饰过滤、spinner 过滤、菜单过滤、代码块检测、消息分段。
 """
 
 import re
@@ -32,12 +32,73 @@ _ANSI_RE = re.compile(
 # 其他控制字符（保留换行和 tab）
 _CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 
-# Spinner / 进度条模式
-_SPINNER_PATTERNS = [
-    re.compile(r"[⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏⣾⣽⣻⢿⡿⣟⣯⣷|/\\-][\s].*$", re.MULTILINE),
-    re.compile(r"^\s*[\-\\|/]\s*$", re.MULTILINE),
-    re.compile(r"\r[^\n]"),  # 回车覆写（进度条常用）
+# ------------------------------------------------------------------
+# TUI 装饰过滤
+# ------------------------------------------------------------------
+
+# 框线字符
+_BOX_CHARS = set("╭╮╰╯│─┌┐└┘├┤┬┴┼═║╔╗╚╝╠╣╦╩╬")
+
+# TUI 欢迎界面 / 状态行关键词
+_TUI_KEYWORDS = [
+    "Welcome back",
+    "Welcome to",
+    "Claude Code",
+    "claude-opus",
+    "claude-sonnet",
+    "claude-haiku",
+    "claude-4",
+    "claude-3",
+    "Model:",
+    "model:",
+    "/help",
+    "Tip:",
+    "tip:",
+    "ESC to",
+    "Esc to",
+    "shortcuts",
+    "ctrl+",
+    "Ctrl+",
+    "tokens remaining",
+    "context window",
+    "session expired",
+    "Auto-compact",
+    "compact conversation",
+    "cost:",
+    "Cost:",
+    "duration:",
+    "Duration:",
 ]
+
+# 分隔线模式（至少 4 个连续的 ─ 或 - 或 = 或 ━）
+_SEPARATOR_RE = re.compile(r"^[\s]*[─━\-=]{4,}[\s]*$")
+
+# ------------------------------------------------------------------
+# Spinner 过滤
+# ------------------------------------------------------------------
+
+# Claude Code spinner 装饰字符
+_SPINNER_CHARS = set("✶✷✸✹✺✻✼✽✾✿❀❁❂❃✢✣✤✥✦✧✳⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏⣾⣽⣻⢿⡿⣟⣯⣷")
+
+# Spinner 行模式：装饰字符开头 + 文本 + 可选的 .../… 结尾
+_SPINNER_LINE_RE = re.compile(
+    r"^[\s]*[✶✷✸✹✺✻✼✽✾✿❀❁❂❃✢✣✤✥✦✧✳⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏⣾⣽⣻⢿⡿⣟⣯⣷][\s].*$"
+)
+
+# ------------------------------------------------------------------
+# 菜单过滤
+# ------------------------------------------------------------------
+
+# 选择菜单行：❯ 开头或 数字. 开头的选项
+_MENU_LINE_RE = re.compile(r"^[\s]*(?:❯|›|>)\s+\d+\.\s+")
+_MENU_OPTION_RE = re.compile(r"^[\s]*\d+\.\s+(?:Yes|No|Always|Never|Skip|Allow|Deny|Accept|Reject|Cancel)")
+
+# bypass 确认提示
+_BYPASS_RE = re.compile(r"(?:I understand|I accept|bypass|skip permissions|dangerously)", re.IGNORECASE)
+
+# ------------------------------------------------------------------
+# 其他检测模式
+# ------------------------------------------------------------------
 
 # Y/n 确认提示
 _CONFIRM_RE = re.compile(
@@ -61,6 +122,11 @@ _DIFF_RE = re.compile(
 _CODE_BLOCK_RE = re.compile(r"```[\s\S]*?```")
 
 
+# ------------------------------------------------------------------
+# 过滤函数
+# ------------------------------------------------------------------
+
+
 def clean_ansi(text: str) -> str:
     """移除 ANSI 转义码和控制字符。"""
     text = _ANSI_RE.sub("", text)
@@ -68,16 +134,117 @@ def clean_ansi(text: str) -> str:
     return text
 
 
-def filter_spinner(text: str) -> str:
-    """过滤 spinner 和进度条行。"""
+# Extra patterns
+_ESC_HINT_RE = re.compile(r"^\s*(esc|Esc)\s+(to\s+)")
+
+def is_tui_line(line: str) -> bool:
+    """判断是否为 TUI 装饰行（框线、欢迎界面、快捷键提示、分隔线）。"""
+    stripped = line.strip()
+    if not stripped:
+        return False
+
+    # 纯框线字符行（可能混有空格）
+    if all(c in _BOX_CHARS or c.isspace() for c in stripped):
+        return True
+
+    # 以框线字符开头或结尾的装饰行
+    if stripped[0] in _BOX_CHARS or stripped[-1] in _BOX_CHARS:
+        return True
+
+    # 分隔线
+    if _SEPARATOR_RE.match(line):
+        return True
+
+    # TUI 关键词
+    for kw in _TUI_KEYWORDS:
+        if kw in line:
+            return True
+
+    if _ESC_HINT_RE.match(stripped):
+        return True
+    return False
+
+
+def is_spinner_line(line: str) -> bool:
+    """判断是否为 spinner 动画行。"""
+    stripped = line.strip()
+    if not stripped:
+        return False
+
+    # 以 spinner 装饰字符开头
+    if stripped[0] in _SPINNER_CHARS:
+        return True
+
+    # 纯 spinner 字符（短行）
+    if len(stripped) <= 3 and any(c in _SPINNER_CHARS for c in stripped):
+        return True
+
+    # 回车覆写行（进度条）
+    if "\r" in line and "\n" not in line:
+        return True
+
+    return False
+
+
+def is_menu_line(line: str) -> bool:
+    """判断是否为选择菜单行（❯ 1. Yes  2. No 等）。"""
+    stripped = line.strip()
+    if not stripped:
+        return False
+
+    # ❯ 开头的选项指示
+    if _MENU_LINE_RE.match(line):
+        return True
+
+    # 数字选项行（1. Yes, 2. No 等）
+    if _MENU_OPTION_RE.match(line):
+        return True
+
+    # bypass 确认行
+    if _BYPASS_RE.search(line):
+        return True
+
+    return False
+
+
+def filter_output(text: str) -> str:
+    """
+    集成所有过滤规则，只保留有意义的内容。
+    保留：工具调用结果、Claude 的回答文本、代码块、错误信息。
+    过滤：TUI 装饰、spinner、菜单、分隔线。
+    """
     lines = text.split("\n")
     filtered = []
+    in_code_block = False
+
     for line in lines:
-        # 跳过纯 spinner 行
-        stripped = line.strip()
-        if stripped and len(stripped) <= 3 and any(c in "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏⣾⣽⣻⢿⡿⣟⣯⣷|/\\-" for c in stripped):
+        # 代码块内的内容全部保留
+        backtick_count = line.count("```")
+        if in_code_block:
+            filtered.append(line)
+            if backtick_count % 2 == 1:
+                in_code_block = False
             continue
+
+        if backtick_count % 2 == 1:
+            in_code_block = True
+            filtered.append(line)
+            continue
+
+        # 过滤 TUI 装饰行
+        if is_tui_line(line):
+            continue
+
+        # 过滤 spinner 行
+        if is_spinner_line(line):
+            continue
+
+        # 过滤菜单行
+        if is_menu_line(line):
+            continue
+
         filtered.append(line)
+
     return "\n".join(filtered)
 
 
@@ -101,7 +268,7 @@ def detect_diff(text: str) -> bool:
 def format_output(text: str) -> str:
     """完整的输出格式化流程。"""
     text = clean_ansi(text)
-    text = filter_spinner(text)
+    text = filter_output(text)
     # 清理连续空行（最多保留 2 个）
     text = re.sub(r"\n{4,}", "\n\n\n", text)
     # 清理行尾空白
@@ -176,3 +343,21 @@ def format_status(project: str, alive: bool, cwd: str) -> str:
         f"📂 CWD: `{cwd}`\n"
         f"{'Running' if alive else 'Stopped'}"
     )
+
+
+def detect_menu_options(text: str) -> list[dict]:
+    """检测 Claude Code 的选项菜单，返回选项列表。
+    
+    格式如：
+    ❯ 1. 最高年化收益率
+      2. 最高夏普比率
+      3. 最大收益/最大回撤
+    """
+    pattern = re.compile(r"^\s*[❯>]?\s*(\d+)\.\s+(.+?)(?:\n\s{5,}(.+))?$", re.MULTILINE)
+    options = []
+    for match in pattern.finditer(text):
+        num = match.group(1)
+        label = match.group(2).strip()
+        desc = match.group(3).strip() if match.group(3) else ""
+        options.append({"num": num, "label": label, "desc": desc})
+    return options
