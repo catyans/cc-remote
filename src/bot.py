@@ -47,6 +47,9 @@ class CCRemoteBot:
         # 命令 Cog 引用
         self._cog = None
 
+        # 待响应消息：project -> discord.Message（用于 ⏳/✅ 状态指示）
+        self._pending_messages: dict[str, discord.Message] = {}
+
         # 注册事件
         self._register_events()
 
@@ -95,16 +98,10 @@ class CCRemoteBot:
             if message.content.startswith(("!", "/")):
                 return
 
-            # 只处理已绑定频道或 allowed_channels 中的消息
+            # 只处理已绑定频道的消息（/start 时自动绑定）
             channel_id = message.channel.id
             logger.info("on_message: user=%s channel=%s content=%s", message.author.name, channel_id, message.content[:50])
-            if (
-                channel_id not in self._project_by_channel
-                and (
-                    not self.config.discord.allowed_channels
-                    or channel_id not in self.config.discord.allowed_channels
-                )
-            ):
+            if channel_id not in self._project_by_channel:
                 return
 
             # 权限检查
@@ -118,16 +115,12 @@ class CCRemoteBot:
     # ------------------------------------------------------------------
 
     def _check_permission(self, message: discord.Message) -> bool:
-        """检查消息是否来自授权用户/频道。"""
+        """检查消息是否来自授权用户。"""
         user_ok = (
             not self.config.discord.allowed_users
             or message.author.id in self.config.discord.allowed_users
         )
-        channel_ok = (
-            not self.config.discord.allowed_channels
-            or message.channel.id in self.config.discord.allowed_channels
-        )
-        return user_ok and channel_ok
+        return user_ok
 
     # ------------------------------------------------------------------
     # 用户消息处理
@@ -169,18 +162,17 @@ class CCRemoteBot:
         if self._cog:
             self._cog._audit_log(message.author, "message", text[:200])
 
-        # 绑定频道到项目
-        self._channel_bindings[project] = channel_id
-        self._project_by_channel[channel_id] = project
-
         # 发送给 claude
         await asyncio.to_thread(self.tmux.send_keys, project, text)
 
-        # 添加反应表示已收到
+        # 添加 ⏳ 反应表示正在处理
         try:
-            await message.add_reaction("📨")
+            await message.add_reaction("\u23f3")  # ⏳
         except discord.errors.Forbidden:
             pass
+
+        # 记录待响应消息，用于后续 ✅ 状态更新
+        self._pending_messages[project] = message
 
     # ------------------------------------------------------------------
     # Poller 回调
@@ -195,6 +187,15 @@ class CCRemoteBot:
         channel = self.bot.get_channel(channel_id)
         if not channel:
             return
+
+        # 更新待响应消息的状态指示：⏳ -> ✅
+        pending = self._pending_messages.pop(project, None)
+        if pending:
+            try:
+                await pending.remove_reaction("\u23f3", self.bot.user)  # 移除 ⏳
+                await pending.add_reaction("\u2705")  # ✅
+            except (discord.errors.Forbidden, discord.errors.NotFound):
+                pass
 
         try:
             await channel.send(text)

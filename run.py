@@ -9,12 +9,47 @@ CC-Remote 入口文件
 """
 
 import argparse
+import atexit
 import logging
+import os
+import signal
 import sys
+import time
 from pathlib import Path
 
-from src.config import load_config, LOG_DIR
+from src.config import load_config, LOG_DIR, ROOT_DIR
 from src.bot import CCRemoteBot
+
+PID_FILE = ROOT_DIR / "cc-remote.pid"
+
+
+def _kill_old_process(logger: logging.Logger) -> None:
+    """检查并终止旧的 cc-remote 进程。"""
+    if not PID_FILE.exists():
+        return
+    try:
+        old_pid = int(PID_FILE.read_text().strip())
+        if old_pid == os.getpid():
+            return
+        os.kill(old_pid, signal.SIGTERM)
+        logger.info("已终止旧进程: PID %d", old_pid)
+        time.sleep(1)
+    except (ProcessLookupError, ValueError):
+        pass  # 进程已不存在或 PID 无效
+    except PermissionError:
+        logger.warning("无权终止旧进程 PID %d", old_pid)
+    finally:
+        PID_FILE.unlink(missing_ok=True)
+
+
+def _write_pid() -> None:
+    """写入当前进程 PID。"""
+    PID_FILE.write_text(str(os.getpid()))
+
+
+def _cleanup_pid() -> None:
+    """退出时清理 PID 文件。"""
+    PID_FILE.unlink(missing_ok=True)
 
 
 def setup_logging(debug: bool = False) -> None:
@@ -64,8 +99,13 @@ def main() -> None:
     setup_logging(args.debug)
     logger = logging.getLogger(__name__)
 
+    # PID 管理：终止旧进程，写入新 PID
+    _kill_old_process(logger)
+    _write_pid()
+    atexit.register(_cleanup_pid)
+
     logger.info("=" * 50)
-    logger.info("CC-Remote 启动中...")
+    logger.info("CC-Remote 启动中... (PID: %d)", os.getpid())
     logger.info("=" * 50)
 
     # 加载配置

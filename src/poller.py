@@ -43,14 +43,17 @@ class OutputPoller:
         self.config = config
         self.idle_timeout = idle_timeout
 
-        # 每个项目的上次输出快照
-        self._last_output: dict[str, str] = {}
+        # 行级去重：记录每个项目已见过的行内容（stripped）
+        self._seen_lines: dict[str, set[str]] = {}
         # 每个项目的上次活动时间
         self._last_activity: dict[str, datetime] = {}
         # 已发送过的确认提示（避免重复）
         self._sent_confirms: dict[str, str] = {}
         # 交互历史（项目 -> deque）
         self._history: dict[str, deque] = {}
+
+        # 输出去重：已发送内容的 hash 集合
+        self._sent_content_hashes: dict[str, set[int]] = {}
 
         # 回调
         self.on_output = None
@@ -72,10 +75,11 @@ class OutputPoller:
         if project in self._tasks and not self._tasks[project].done():
             logger.warning("项目 %s 已在轮询中", project)
             return
-        self._last_output[project] = ""
+        self._seen_lines[project] = set()
         self._last_activity[project] = datetime.now()
         self._sent_confirms[project] = ""
         self._empty_count[project] = 0
+        self._sent_content_hashes[project] = set()
         self._history.setdefault(project, deque(maxlen=50))
         self._tasks[project] = asyncio.create_task(self._poll_loop(project))
         logger.info("开始轮询: %s", project)
@@ -86,6 +90,8 @@ class OutputPoller:
         if task and not task.done():
             task.cancel()
             logger.info("停止轮询: %s", project)
+        self._seen_lines.pop(project, None)
+        self._sent_content_hashes.pop(project, None)
 
     def stop_all(self) -> None:
         """停止所有轮询。"""
@@ -112,9 +118,8 @@ class OutputPoller:
                 raw_output = await asyncio.to_thread(self.tmux.capture_pane, project)
                 formatted = format_output(raw_output)
 
-                # 计算增量
-                last = self._last_output.get(project, "")
-                delta = self._compute_delta(last, formatted)
+                # 计算增量（行级 hash 对比）
+                delta = self._compute_delta(project, formatted)
 
                 if not delta:
                     self._empty_count[project] = self._empty_count.get(project, 0) + 1
@@ -131,12 +136,11 @@ class OutputPoller:
                 await asyncio.sleep(self.config.settle_time)
                 raw_output2 = await asyncio.to_thread(self.tmux.capture_pane, project)
                 formatted2 = format_output(raw_output2)
-                delta = self._compute_delta(last, formatted2)
+                delta = self._compute_delta(project, formatted2)
 
                 if not delta or len(delta.strip()) < self.min_delta_len:
                     continue
 
-                self._last_output[project] = formatted2
                 self._last_activity[project] = datetime.now()
 
                 # 记录历史
@@ -164,10 +168,19 @@ class OutputPoller:
                 if tool_name and self.on_tool_status:
                     await self.on_tool_status(project, tool_name)
 
-                # 发送输出
+                # 发送输出（带去重）
                 if self.on_output:
                     chunks = split_message(delta, self.config.max_chunk_size)
+                    sent_hashes = self._sent_content_hashes.setdefault(project, set())
                     for chunk in chunks:
+                        chunk_hash = hash(chunk.strip())
+                        if chunk_hash in sent_hashes:
+                            logger.debug("输出去重: 跳过已发送内容")
+                            continue
+                        sent_hashes.add(chunk_hash)
+                        # 防止 hash 集合无限增长
+                        if len(sent_hashes) > 500:
+                            sent_hashes.clear()
                         await self.on_output(project, chunk)
 
         except asyncio.CancelledError:
@@ -175,45 +188,29 @@ class OutputPoller:
         except Exception:
             logger.exception("轮询循环异常: %s", project)
 
-    def _compute_delta(self, old: str, new: str) -> str:
+    def _compute_delta(self, project: str, formatted: str) -> str:
         """
-        计算增量输出。
-        使用简单的后缀匹配：找到 old 在 new 中的最长公共后缀，
-        返回 new 中新增的部分。
+        使用行级内容对比计算增量输出。
+        记录已见过的行内容，只返回新出现的行。
         """
-        if not old:
-            return new
+        lines = formatted.split("\n")
+        seen = self._seen_lines.get(project, set())
 
-        if new == old:
-            return ""
+        new_lines = []
+        for line in lines:
+            stripped = line.strip()
+            if not stripped:
+                continue
+            if stripped not in seen:
+                new_lines.append(line)
+                seen.add(stripped)
 
-        # 在 new 中查找 old 的最后一部分
-        # 取 old 的最后 N 行作为锚点
-        old_lines = old.split("\n")
-        anchor_size = min(5, len(old_lines))
-        anchor = "\n".join(old_lines[-anchor_size:])
+        # 防止 seen 集合无限增长（超过上限时只保留当前快照）
+        if len(seen) > 2000:
+            seen = {l.strip() for l in lines if l.strip()}
+        self._seen_lines[project] = seen
 
-        idx = new.rfind(anchor)
-        if idx >= 0:
-            delta = new[idx + len(anchor):]
-            return delta.strip("\n")
-
-        # 如果找不到锚点，对比行级差异
-        new_lines = new.split("\n")
-        # 找到第一个不同的行
-        min_len = min(len(old_lines), len(new_lines))
-        diff_start = 0
-        for i in range(min_len):
-            if old_lines[i] != new_lines[i]:
-                diff_start = i
-                break
-        else:
-            diff_start = min_len
-
-        if diff_start < len(new_lines):
-            return "\n".join(new_lines[diff_start:])
-
-        return ""
+        return "\n".join(new_lines)
 
     async def _check_idle(self, project: str) -> None:
         """检查空闲超时。"""

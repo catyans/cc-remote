@@ -8,6 +8,7 @@ import shlex
 import logging
 import os
 import time
+import threading
 from pathlib import Path
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -34,6 +35,8 @@ class TmuxManager:
         self.config = config
         # project_name -> SessionInfo
         self.sessions: dict[str, SessionInfo] = {}
+        # 消息去重：最近发送的 (timestamp, hash)
+        self._recent_messages: list[tuple[float, int]] = []
 
     # ------------------------------------------------------------------
     # 内部工具
@@ -85,8 +88,11 @@ class TmuxManager:
             launch_cmd,         # 启动 claude（跳过权限）
         ])
 
-        # 等待 bypass 确认提示出现，然后自动接受
-        self._auto_accept_bypass(name)
+        # 在后台线程运行 auto-accept（非阻塞）
+        thread = threading.Thread(
+            target=self._auto_accept_bypass, args=(name,), daemon=True
+        )
+        thread.start()
 
         logger.info("已启动会话: %s (cwd=%s, skip-permissions)", name, resolved_cwd)
         return info
@@ -154,8 +160,21 @@ class TmuxManager:
     # ------------------------------------------------------------------
 
     def send_keys(self, project: str, text: str, enter: bool = True) -> None:
-        """向 tmux 会话发送按键输入。使用 -l 发送文本避免特殊键解析。"""
+        """向 tmux 会话发送按键输入（带去重）。使用 -l 发送文本避免特殊键解析。"""
         name = self._session_name(project)
+
+        # 消息去重：相同消息 3 秒内不重复发送
+        if text:
+            now = time.time()
+            msg_hash = hash(text)
+            self._recent_messages = [
+                (t, h) for t, h in self._recent_messages if now - t < 5
+            ]
+            if any(h == msg_hash and now - t < 3 for t, h in self._recent_messages):
+                logger.debug("去重: 跳过重复消息: %s", text[:40])
+                return
+            self._recent_messages.append((now, msg_hash))
+
         if text:
             # 用 -l (literal) 发送文本，避免 tmux 把文本中的特殊字符当按键
             self._run(["tmux", "send-keys", "-t", name, "-l", text])

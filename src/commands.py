@@ -41,16 +41,12 @@ class ClaudeCog(commands.Cog):
     # ------------------------------------------------------------------
 
     def _check_permission(self, interaction: discord.Interaction) -> bool:
-        """检查用户和频道是否在白名单中。"""
+        """检查用户是否在白名单中。"""
         user_ok = (
             not self.config.discord.allowed_users
             or interaction.user.id in self.config.discord.allowed_users
         )
-        channel_ok = (
-            not self.config.discord.allowed_channels
-            or interaction.channel_id in self.config.discord.allowed_channels
-        )
-        return user_ok and channel_ok
+        return user_ok
 
     def _audit_log(self, user: discord.User, action: str, detail: str = "") -> None:
         """记录审计日志（内存 + 文件）。"""
@@ -107,7 +103,7 @@ class ClaudeCog(commands.Cog):
         try:
             info = await asyncio.to_thread(self.tmux.start_session, project, cwd)
             self.poller.start(project)
-            # 通知 bot 绑定频道
+            # 绑定频道（/start 所在频道自动绑定）
             if hasattr(self.bot, '_cc_bot'):
                 self.bot._cc_bot._channel_bindings[project] = interaction.channel_id
                 self.bot._cc_bot._project_by_channel[interaction.channel_id] = project
@@ -115,7 +111,8 @@ class ClaudeCog(commands.Cog):
                 f"✅ Claude Code 会话已启动\n"
                 f"📁 项目: `{project}`\n"
                 f"📂 目录: `{info.cwd}`\n"
-                f"发送消息即可与 Claude 交互"
+                f"💬 在此频道发送消息即可与 Claude 交互\n"
+                f"⏳ Claude Code 正在后台初始化..."
             )
         except Exception as e:
             logger.exception("启动会话失败")
@@ -130,11 +127,21 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        self._audit_log(interaction.user, "stop", project)
-        self.poller.stop(project)
-        success = self.tmux.stop_session(project)
-        msg = f"✅ 会话 `{project}` 已关闭" if success else f"⚠️ 会话 `{project}` 关闭失败（可能已不存在）"
-        await interaction.response.send_message(msg)
+        try:
+            self._audit_log(interaction.user, "stop", project)
+            self.poller.stop(project)
+            success = self.tmux.stop_session(project)
+            # 清除频道绑定
+            if hasattr(self.bot, '_cc_bot'):
+                cc = self.bot._cc_bot
+                channel_id = cc._channel_bindings.pop(project, None)
+                if channel_id:
+                    cc._project_by_channel.pop(channel_id, None)
+            msg = f"✅ 会话 `{project}` 已关闭" if success else f"⚠️ 会话 `{project}` 关闭失败（可能已不存在）"
+            await interaction.response.send_message(msg)
+        except Exception as e:
+            logger.exception("关闭会话失败")
+            await interaction.response.send_message(f"❌ 关闭失败: {e}")
 
     @app_commands.command(name="status", description="查看当前会话状态")
     @app_commands.describe(project="项目名称（默认 default）")
@@ -145,24 +152,28 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        alive = self.tmux.is_alive(project)
-        info = self.tmux.get_info(project)
-        cwd = info.cwd if info else "N/A"
+        try:
+            alive = self.tmux.is_alive(project)
+            info = self.tmux.get_info(project)
+            cwd = info.cwd if info else "N/A"
 
-        embed = discord.Embed(
-            title="Claude Code Status",
-            color=discord.Color.green() if alive else discord.Color.red(),
-        )
-        embed.add_field(name="Project", value=f"`{project}`", inline=True)
-        embed.add_field(name="Status", value="🟢 Running" if alive else "🔴 Stopped", inline=True)
-        embed.add_field(name="CWD", value=f"`{cwd}`", inline=False)
-        if info:
-            embed.add_field(
-                name="Started",
-                value=info.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-                inline=True,
+            embed = discord.Embed(
+                title="Claude Code Status",
+                color=discord.Color.green() if alive else discord.Color.red(),
             )
-        await interaction.response.send_message(embed=embed)
+            embed.add_field(name="Project", value=f"`{project}`", inline=True)
+            embed.add_field(name="Status", value="🟢 Running" if alive else "🔴 Stopped", inline=True)
+            embed.add_field(name="CWD", value=f"`{cwd}`", inline=False)
+            if info:
+                embed.add_field(
+                    name="Started",
+                    value=info.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+                    inline=True,
+                )
+            await interaction.response.send_message(embed=embed)
+        except Exception as e:
+            logger.exception("查看状态失败")
+            await interaction.response.send_message(f"❌ 查看状态失败: {e}")
 
     @app_commands.command(name="abort", description="发送 Ctrl+C 中断当前操作")
     @app_commands.describe(project="项目名称（默认 default）")
@@ -173,14 +184,18 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        self._audit_log(interaction.user, "abort", project)
+        try:
+            self._audit_log(interaction.user, "abort", project)
 
-        if not self.tmux.is_alive(project):
-            await interaction.response.send_message("⚠️ 没有活跃的会话")
-            return
+            if not self.tmux.is_alive(project):
+                await interaction.response.send_message("⚠️ 没有活跃的会话")
+                return
 
-        self.tmux.send_ctrl_c(project)
-        await interaction.response.send_message("🛑 已发送中断信号 (Ctrl+C)")
+            self.tmux.send_ctrl_c(project)
+            await interaction.response.send_message("🛑 已发送中断信号 (Ctrl+C)")
+        except Exception as e:
+            logger.exception("中断操作失败")
+            await interaction.response.send_message(f"❌ 中断失败: {e}")
 
     @app_commands.command(name="history", description="查看最近的交互历史")
     @app_commands.describe(
@@ -197,21 +212,25 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        history = self.poller.get_history(project, count)
-        if not history:
-            await interaction.response.send_message("📭 暂无历史记录")
-            return
+        try:
+            history = self.poller.get_history(project, count)
+            if not history:
+                await interaction.response.send_message("📭 暂无历史记录")
+                return
 
-        lines = []
-        for entry in history:
-            t = entry["time"][:19]
-            content = entry["content"][:100]
-            lines.append(f"`{t}` {content}")
+            lines = []
+            for entry in history:
+                t = entry["time"][:19]
+                content = entry["content"][:100]
+                lines.append(f"`{t}` {content}")
 
-        text = "\n".join(lines)
-        if len(text) > 1900:
-            text = text[:1900] + "\n..."
-        await interaction.response.send_message(f"**Recent History ({project})**\n{text}")
+            text = "\n".join(lines)
+            if len(text) > 1900:
+                text = text[:1900] + "\n..."
+            await interaction.response.send_message(f"**Recent History ({project})**\n{text}")
+        except Exception as e:
+            logger.exception("查看历史失败")
+            await interaction.response.send_message(f"❌ 查看历史失败: {e}")
 
     @app_commands.command(name="cost", description="查看当前会话的 token 用量")
     @app_commands.describe(project="项目名称（默认 default）")
@@ -222,13 +241,17 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        if not self.tmux.is_alive(project):
-            await interaction.response.send_message("⚠️ 没有活跃的会话")
-            return
+        try:
+            if not self.tmux.is_alive(project):
+                await interaction.response.send_message("⚠️ 没有活跃的会话")
+                return
 
-        # 发送 /cost 到 claude CLI（claude 内置命令）
-        self.tmux.send_keys(project, "/cost")
-        await interaction.response.send_message("📊 已请求 token 用量信息，结果将在输出中显示")
+            # 发送 /cost 到 claude CLI（claude 内置命令）
+            self.tmux.send_keys(project, "/cost")
+            await interaction.response.send_message("📊 已请求 token 用量信息，结果将在输出中显示")
+        except Exception as e:
+            logger.exception("查看用量失败")
+            await interaction.response.send_message(f"❌ 查看用量失败: {e}")
 
     @app_commands.command(name="cd", description="切换工作目录")
     @app_commands.describe(
@@ -245,17 +268,20 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        self._audit_log(interaction.user, "cd", f"{project} -> {path}")
-
-        if not self.tmux.is_alive(project):
-            await interaction.response.send_message("⚠️ 没有活跃的会话")
-            return
-
         try:
+            self._audit_log(interaction.user, "cd", f"{project} -> {path}")
+
+            if not self.tmux.is_alive(project):
+                await interaction.response.send_message("⚠️ 没有活跃的会话")
+                return
+
             resolved = self.tmux.change_directory(project, path)
             await interaction.response.send_message(f"📂 已切换到: `{resolved}`")
         except FileNotFoundError as e:
             await interaction.response.send_message(f"❌ {e}")
+        except Exception as e:
+            logger.exception("切换目录失败")
+            await interaction.response.send_message(f"❌ 切换目录失败: {e}")
 
     @app_commands.command(name="project", description="切换或查看项目")
     @app_commands.describe(name="项目名称（留空查看所有项目）")
@@ -266,36 +292,43 @@ class ClaudeCog(commands.Cog):
             await interaction.response.send_message("⛔ 无权限", ephemeral=True)
             return
 
-        if not name:
-            # 列出所有可用项目
-            lines = []
-            for pname, pcwd in self.config.projects.items():
-                alive = self.tmux.is_alive(pname)
-                icon = "🟢" if alive else "⚪"
-                lines.append(f"{icon} `{pname}` → `{pcwd}`")
-            text = "\n".join(lines) or "暂无配置项目"
-            await interaction.response.send_message(f"**Projects**\n{text}")
-            return
-
-        # 切换到指定项目（启动新会话）
-        self._audit_log(interaction.user, "project_switch", name)
-        cwd = self.config.projects.get(name)
-        if not cwd:
-            await interaction.response.send_message(
-                f"❌ 未知项目: `{name}`\n已配置项目: {', '.join(self.config.projects.keys())}"
-            )
-            return
-
-        await interaction.response.defer()
         try:
+            if not name:
+                # 列出所有可用项目
+                lines = []
+                for pname, pcwd in self.config.projects.items():
+                    alive = self.tmux.is_alive(pname)
+                    icon = "🟢" if alive else "⚪"
+                    lines.append(f"{icon} `{pname}` → `{pcwd}`")
+                text = "\n".join(lines) or "暂无配置项目"
+                await interaction.response.send_message(f"**Projects**\n{text}")
+                return
+
+            # 切换到指定项目（启动新会话）
+            self._audit_log(interaction.user, "project_switch", name)
+            cwd = self.config.projects.get(name)
+            if not cwd:
+                await interaction.response.send_message(
+                    f"❌ 未知项目: `{name}`\n已配置项目: {', '.join(self.config.projects.keys())}"
+                )
+                return
+
+            await interaction.response.defer()
             info = await asyncio.to_thread(self.tmux.start_session, name, cwd)
             self.poller.start(name)
+            # 绑定频道
+            if hasattr(self.bot, '_cc_bot'):
+                self.bot._cc_bot._channel_bindings[name] = interaction.channel_id
+                self.bot._cc_bot._project_by_channel[interaction.channel_id] = name
             await interaction.followup.send(
                 f"✅ 已切换到项目 `{name}`\n📂 目录: `{info.cwd}`"
             )
         except Exception as e:
             logger.exception("切换项目失败")
-            await interaction.followup.send(f"❌ 切换失败: {e}")
+            try:
+                await interaction.followup.send(f"❌ 切换失败: {e}")
+            except Exception:
+                await interaction.response.send_message(f"❌ 切换失败: {e}")
 
 
 # ------------------------------------------------------------------
