@@ -179,16 +179,22 @@ class OutputPoller:
 
                 # 发送输出（带去重）
                 if self.on_output:
-                    # 整体 delta 去重（防止 TUI 重绘导致同样的输出反复发送）
-                    delta_hash = hash(delta.strip())
+                    # 归一化 delta 用于去重：去掉行号、空白差异
+                    import re
+                    normalized = re.sub(r"\s+", " ", delta.strip())
+                    normalized = re.sub(r"\d+[+-]?\s", "", normalized)  # strip line numbers
+                    delta_hash = hash(normalized[:500])  # 只用前500字符做指纹
                     sent_hashes = self._sent_content_hashes.setdefault(project, set())
                     if delta_hash in sent_hashes:
-                        logger.debug("输出去重: 跳过重复 delta")
+                        logger.debug("输出去重: 跳过重复 delta (normalized)")
                         continue
                     sent_hashes.add(delta_hash)
                     # 防止 hash 集合无限增长
-                    if len(sent_hashes) > 500:
+                    if len(sent_hashes) > 200:
+                        # 保留最近的 hash（转为 list 取后半）
+                        recent = list(sent_hashes)[-100:]
                         sent_hashes.clear()
+                        sent_hashes.update(recent)
 
                     chunks = split_message(delta, self.config.max_chunk_size)
                     for chunk in chunks:
