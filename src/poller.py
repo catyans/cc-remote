@@ -195,27 +195,46 @@ class OutputPoller:
 
     def _compute_delta(self, project: str, formatted: str) -> str:
         """
-        使用行级内容对比计算增量输出。
-        记录已见过的行内容，只返回新出现的行。
+        快照对比：比较当前完整输出与上次快照，提取尾部新增内容。
+        比行级 hash 去重更可靠，不会误吞重复行内容。
         """
-        lines = formatted.split("\n")
-        seen = self._seen_lines.get(project, set())
+        prev = self._seen_lines.get(project, "")
+        self._seen_lines[project] = formatted
 
-        new_lines = []
-        for line in lines:
-            stripped = line.strip()
-            if not stripped:
-                continue
-            if stripped not in seen:
-                new_lines.append(line)
-                seen.add(stripped)
+        if not prev:
+            # 首次捕获：跳过（避免发送 tmux 里的旧输出）
+            return ""
 
-        # 防止 seen 集合无限增长（超过上限时只保留当前快照）
-        if len(seen) > 2000:
-            seen = {l.strip() for l in lines if l.strip()}
-        self._seen_lines[project] = seen
+        # 如果新快照比旧的长且前缀匹配，直接取尾部增量
+        if formatted.startswith(prev):
+            delta = formatted[len(prev):]
+            return delta.strip()
 
-        return "\n".join(new_lines)
+        # 前缀不匹配（TUI 重绘等），找最长公共后缀
+        old_lines = prev.split("\n")
+        new_lines = formatted.split("\n")
+
+        # 在新输出中找旧输出最后几行的位置
+        overlap = 0
+        search_len = min(len(old_lines), 20)  # 只搜索最后 20 行
+        for i in range(search_len, 0, -1):
+            old_tail = old_lines[-i:]
+            # 在新输出中查找这个序列
+            for j in range(len(new_lines) - i + 1):
+                if new_lines[j:j+i] == old_tail:
+                    overlap = j + i
+                    break
+            if overlap:
+                break
+
+        if overlap:
+            delta_lines = new_lines[overlap:]
+        else:
+            # 无法找到重叠，取新内容中不在旧内容中的尾部
+            delta_lines = new_lines
+
+        delta = "\n".join(delta_lines)
+        return delta.strip()
 
     async def _check_idle(self, project: str) -> None:
         """检查空闲超时。"""
