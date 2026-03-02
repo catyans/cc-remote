@@ -179,17 +179,19 @@ class OutputPoller:
 
                 # 发送输出（带去重）
                 if self.on_output:
-                    chunks = split_message(delta, self.config.max_chunk_size)
+                    # 整体 delta 去重（防止 TUI 重绘导致同样的输出反复发送）
+                    delta_hash = hash(delta.strip())
                     sent_hashes = self._sent_content_hashes.setdefault(project, set())
+                    if delta_hash in sent_hashes:
+                        logger.debug("输出去重: 跳过重复 delta")
+                        continue
+                    sent_hashes.add(delta_hash)
+                    # 防止 hash 集合无限增长
+                    if len(sent_hashes) > 500:
+                        sent_hashes.clear()
+
+                    chunks = split_message(delta, self.config.max_chunk_size)
                     for chunk in chunks:
-                        chunk_hash = hash(chunk.strip())
-                        if chunk_hash in sent_hashes:
-                            logger.debug("输出去重: 跳过已发送内容")
-                            continue
-                        sent_hashes.add(chunk_hash)
-                        # 防止 hash 集合无限增长
-                        if len(sent_hashes) > 500:
-                            sent_hashes.clear()
                         await self.on_output(project, chunk)
 
         except asyncio.CancelledError:
