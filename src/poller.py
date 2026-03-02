@@ -124,6 +124,7 @@ class OutputPoller:
                 delta = self._compute_delta(project, formatted)
 
                 if not delta:
+                    logger.debug("poll: no delta for %s, formatted_len=%s", project, len(formatted))
                     self._empty_count[project] = self._empty_count.get(project, 0) + 1
                     # 连续多次空输出时减少检测频率
                     if self._empty_count[project] > 5:
@@ -136,11 +137,14 @@ class OutputPoller:
 
                 # 等待输出稳定（避免发送不完整内容）
                 await asyncio.sleep(self.config.settle_time)
+                # 再次捕获，合并 settle 期间的新增输出
                 raw_output2 = await asyncio.to_thread(self.tmux.capture_pane, project)
                 formatted2 = format_output(raw_output2)
-                delta = self._compute_delta(project, formatted2)
+                extra = self._compute_delta(project, formatted2)
+                if extra:
+                    delta = delta + "\n" + extra
 
-                if not delta or len(delta.strip()) < self.min_delta_len:
+                if len(delta.strip()) < self.min_delta_len:
                     continue
 
                 self._last_activity[project] = datetime.now()
@@ -200,6 +204,8 @@ class OutputPoller:
         """
         prev = self._seen_lines.get(project, "")
         self._seen_lines[project] = formatted
+        logger.debug("delta: project=%s prev_type=%s prev_len=%s new_len=%s", 
+                     project, type(prev).__name__, len(prev) if prev else 0, len(formatted))
 
         if prev is None:
             # 首次捕获：保存基准快照，不发送（避免发送启动时的旧输出）
@@ -234,6 +240,7 @@ class OutputPoller:
             delta_lines = new_lines
 
         delta = "\n".join(delta_lines)
+        logger.debug("delta result: project=%s delta_len=%s", project, len(delta.strip()))
         return delta.strip()
 
     async def _check_idle(self, project: str) -> None:
