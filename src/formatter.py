@@ -89,6 +89,28 @@ _TUI_KEYWORDS = [
 # 分隔线模式（至少 4 个连续的 ─ 或 - 或 = 或 ━）
 _SEPARATOR_RE = re.compile(r"^[\s]*[─━\-=]{4,}[\s]*$")
 
+# 进度条模式（yfinance 等: [******  13%], 2 of 15 completed, etc.）
+_PROGRESS_BAR_RE = re.compile(
+    r"\[\s*[*#=>\-\\|/█▓▒░]+\s*\d+%\s*\]"
+    r"|\d+%\s*\|"
+    r"|\d+\s+of\s+\d+\s+completed"
+    r"|downloading.*\d+%",
+    re.IGNORECASE,
+)
+
+# Claude Code 思考/等待状态行（· Thinking… / · Churning… (11m 13s)）
+_THINKING_STATUS_RE = re.compile(
+    r"^[\s·•]*(?:Thinking|Churning|Waiting|Processing|Generating|Reading|Analyzing|Searching|Compiling|Running)"
+    r"[…\.]{0,3}\s*(?:\(.*\))?\s*$",
+    re.IGNORECASE,
+)
+
+# "Task Output" 重复状态行
+_TASK_OUTPUT_RE = re.compile(
+    r"^[\s]*(?:Task Output|Waiting for task|Queued|Pending)",
+    re.IGNORECASE,
+)
+
 # ------------------------------------------------------------------
 # Spinner 过滤
 # ------------------------------------------------------------------
@@ -201,6 +223,18 @@ def is_spinner_line(line: str) -> bool:
 
     # 回车覆写行（进度条）
     if "\r" in line and "\n" not in line:
+        return True
+
+    # Claude Code 思考/等待状态行
+    if _THINKING_STATUS_RE.match(stripped):
+        return True
+
+    # 进度条行
+    if _PROGRESS_BAR_RE.search(stripped):
+        return True
+
+    # "Task Output" / "Waiting for task" 状态行
+    if _TASK_OUTPUT_RE.match(stripped):
         return True
 
     return False

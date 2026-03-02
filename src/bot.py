@@ -4,6 +4,7 @@ Discord Bot 核心模块
 """
 
 import asyncio
+import io
 import logging
 from datetime import datetime
 from pathlib import Path
@@ -178,6 +179,9 @@ class CCRemoteBot:
     # Poller 回调
     # ------------------------------------------------------------------
 
+    # 长输出阈值：超过此字符数时发送为文件附件
+    LONG_OUTPUT_THRESHOLD = 3600  # ~2 条 Discord 消息
+
     async def _on_poller_output(self, project: str, text: str) -> None:
         """轮询到新输出时的回调。"""
         channel_id = self._channel_bindings.get(project)
@@ -198,7 +202,24 @@ class CCRemoteBot:
                 pass
 
         try:
-            await channel.send(text)
+            # 长输出 → 文件附件，避免刷屏
+            if len(text) > self.LONG_OUTPUT_THRESHOLD:
+                # 提取摘要（前几行）
+                lines = text.split("\n")
+                summary_lines = [l for l in lines[:5] if l.strip()]
+                summary = "\n".join(summary_lines)
+                if len(summary) > 300:
+                    summary = summary[:300] + "…"
+
+                buf = io.BytesIO(text.encode("utf-8"))
+                filename = f"output-{project}.md"
+                file = discord.File(buf, filename=filename)
+                await channel.send(
+                    f"📄 **输出较长，已折叠为文件：**\n{summary}",
+                    file=file,
+                )
+            else:
+                await channel.send(text)
         except discord.errors.HTTPException as e:
             # 消息过长时分段重试
             if e.code == 50035:

@@ -54,6 +54,8 @@ class OutputPoller:
 
         # 输出去重：已发送内容的 hash 集合
         self._sent_content_hashes: dict[str, set[int]] = {}
+        # 菜单去重：上次发送的菜单选项 hash
+        self._last_menu_hash: dict[str, int] = {}
 
         # 回调
         self.on_output = None
@@ -157,11 +159,14 @@ class OutputPoller:
                     if self.on_confirm:
                         await self.on_confirm(project, confirm_prompt)
 
-                # 检测选项菜单
+                # 检测选项菜单（带去重）
                 from .formatter import detect_menu_options
                 menu_options = detect_menu_options(delta)
                 if menu_options and len(menu_options) >= 2 and self.on_menu:
-                    await self.on_menu(project, menu_options)
+                    menu_hash = hash(tuple(o["label"] for o in menu_options))
+                    if menu_hash != self._last_menu_hash.get(project):
+                        self._last_menu_hash[project] = menu_hash
+                        await self.on_menu(project, menu_options)
 
                 # 检测工具运行状态
                 tool_name = detect_tool_running(delta)
