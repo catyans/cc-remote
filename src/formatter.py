@@ -89,19 +89,26 @@ _TUI_KEYWORDS = [
 # 分隔线模式（至少 4 个连续的 ─ 或 - 或 = 或 ━）
 _SEPARATOR_RE = re.compile(r"^[\s]*[─━\-=]{4,}[\s]*$")
 
-# 进度条模式（yfinance 等: [******  13%], 2 of 15 completed, etc.）
+# 进度条模式（yfinance 等: [******  13%], [   0%   ], 2 of 15 completed, etc.）
 _PROGRESS_BAR_RE = re.compile(
-    r"\[\s*[*#=>\-\\|/█▓▒░]+\s*\d+%\s*\]"
+    r"\[\s*[*#=>\-\\|/█▓▒░ ]*\d+%\s*\]"  # [  0%  ] or [***13%]
     r"|\d+%\s*\|"
     r"|\d+\s+of\s+\d+\s+completed"
     r"|downloading.*\d+%",
     re.IGNORECASE,
 )
 
-# Claude Code 思考/等待状态行（· Thinking… / · Churning… (11m 13s)）
+# Claude Code 思考/等待状态行（· Thinking… / · Dilly-dallying… (11m 13s)）
+# Claude uses random verbs, so match the pattern: · <Word>… (<timing>)
 _THINKING_STATUS_RE = re.compile(
-    r"^[\s·•]*(?:Thinking|Churning|Waiting|Processing|Generating|Reading|Analyzing|Searching|Compiling|Running)"
+    r"^[\s·•]*[A-Z][a-z-]+(?:ing|ling|ting|ring|ning|sing|zing)"
     r"[…\.]{0,3}\s*(?:\(.*\))?\s*$",
+    re.IGNORECASE,
+)
+
+# Timing/timeout 行: (5s · timeout 5m), (1m 57s · ↓ 3.4k tokens · thought for 15s)
+_TIMING_RE = re.compile(
+    r"^\s*\(?\d+[smh]\s*(?:\d+[smh])?\s*·\s*(?:timeout|↓|↑|thought).*\)?\s*$",
     re.IGNORECASE,
 )
 
@@ -227,6 +234,10 @@ def is_spinner_line(line: str) -> bool:
 
     # Claude Code 思考/等待状态行
     if _THINKING_STATUS_RE.match(stripped):
+        return True
+
+    # 纯 timing 行: (5s · timeout 5m)
+    if _TIMING_RE.match(stripped):
         return True
 
     # 进度条行

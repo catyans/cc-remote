@@ -17,9 +17,14 @@ if [ -f cc-remote.pid ]; then
     rm -f cc-remote.pid
 fi
 
-# 启动
-python3 run.py "$@" &
+# 确保日志目录存在
+mkdir -p logs
+
+# 启动（nohup + 重定向，防止父进程退出时被杀）
+nohup python3 run.py "$@" >> logs/cc-remote.log 2>&1 &
 NEW_PID=$!
+echo "$NEW_PID" > cc-remote.pid
+disown "$NEW_PID" 2>/dev/null || true
 
 sleep 2
 
