@@ -3,6 +3,7 @@ Discord 斜杠命令定义模块
 定义所有 /slash 命令并注册到 bot。
 """
 
+import asyncio
 import logging
 from datetime import datetime
 
