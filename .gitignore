@@ -1,4 +1,10 @@
+config.yaml
+*.pid
+logs/
 __pycache__/
 *.pyc
-logs/
-*.pid
+.DS_Store
+*.egg-info/
+dist/
+build/
+.env
