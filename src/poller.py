@@ -77,7 +77,7 @@ class OutputPoller:
         if project in self._tasks and not self._tasks[project].done():
             logger.warning("项目 %s 已在轮询中", project)
             return
-        self._seen_lines[project] = set()
+        self._seen_lines[project] = None
         self._last_activity[project] = datetime.now()
         self._sent_confirms[project] = ""
         self._empty_count[project] = 0
@@ -201,8 +201,8 @@ class OutputPoller:
         prev = self._seen_lines.get(project, "")
         self._seen_lines[project] = formatted
 
-        if not prev:
-            # 首次捕获：跳过（避免发送 tmux 里的旧输出）
+        if prev is None:
+            # 首次捕获：保存基准快照，不发送（避免发送启动时的旧输出）
             return ""
 
         # 如果新快照比旧的长且前缀匹配，直接取尾部增量
